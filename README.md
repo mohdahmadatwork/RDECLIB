@@ -1,3 +1,3 @@
-��#� �R�D�E�C�L�I�B�
+�RDECLIB
 �Not Completed yet . Working on a Library management system
 �
