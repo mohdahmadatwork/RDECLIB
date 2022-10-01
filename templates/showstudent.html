@@ -1,0 +1,155 @@
+{% extends "dashboardbase.html" %}
+{% block css %}
+<!-- Template Main CSS File -->
+<link href="/static/css/assets/css/style.css" rel="stylesheet">
+{% endblock css %}
+{% block searchaction %}
+"/clgsite/studentsearch/"
+{% endblock searchaction %}
+{% block searchfilter %}
+<div class="">
+                  <div class="">
+                    <select name="queryfilter" class="form-select" aria-label="Default select example">
+                      <option selected="">Filter</option>
+                      <option value="First_Name">First_Name</option>
+                      <option value="Last_Name">Last_Name</option>
+                      <option value="Fathers_Name">Fathers_Name</option>
+                      <option value="Address">Address</option>
+                      <option value="Roll_Number">Roll_Number</option>
+                      <option value="Year">Year</option>
+                      <option value="Branch">Branch</option>
+                      <option value="Phone_Number">Phone_Number</option>
+                      <option value="Joining_Date">Joining_Date</option>
+                      <option value="Expiring_Date">Expiring_Date</option>
+                      <option value="Library_ID">Library_ID</option>
+                      <option value="Student_image">Student_image</option>
+                      <option value="Email">Email</option>
+                    </select>
+                  </div>
+                </div>
+{% endblock searchfilter %}
+
+{% block main %}
+
+
+    <div class="pagetitle">
+      <h1>Add Books</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item">Books</li>
+          <li class="breadcrumb-item active">Add Book</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+    <section class="section">
+
+          
+
+        <div class="card">
+            <div class="card-body  ">
+              <div class="container-fluid my-3 py-2">
+                <div class="row row-cols-2 row-cols-lg-4 g-2 g-lg-2">
+                  {% for student in students %}
+                  <div class="col">
+                    <div class="p-3 border bg-light">
+                        <div class="card ">
+                            <img src="{{student.Student_image.url}}"  class="card-img-top" style="height: 30vh;" alt="Profile">
+                            <div class="card-body">
+                              <h5 class="card-title">{{student.First_Name}} {{student.Last_Name}}</h5>
+                              <p class="card-text">Lib ID:- {{student.Library_ID}} <br>
+                                Branch:- {{student.Year}} {{student.Branch}} <br>
+                                Father:- {{student.Fathers_Name}}
+                              </p>
+                              <a href="/clgsite/studentprofile/{{student.Library_ID}}" class="btn btn-primary">Go somewhere</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      {% endfor %}
+                  
+                </div>
+              </div>
+            </div>
+        </div>
+        <div class="modal fade" id="verticalycentered" tabindex="-1" aria-hidden="true" style="display: none;">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Vertically Centered</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="card">
+                        <div class="card-body">
+                          <h5 class="card-title">Table with hoverable rows</h5>
+            
+                          <!-- Table with hoverable rows -->
+                          <table class="table table-hover">
+                            <thead>
+                              <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Position</th>
+                                <th scope="col">Age</th>
+                                <th scope="col">Start Date</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <th scope="row">1</th>
+                                <td>Brandon Jacob</td>
+                                <td>Designer</td>
+                                <td>28</td>
+                                <td>2016-05-25</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">2</th>
+                                <td>Bridie Kessler</td>
+                                <td>Developer</td>
+                                <td>35</td>
+                                <td>2014-12-05</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">3</th>
+                                <td>Ashleigh Langosh</td>
+                                <td>Finance</td>
+                                <td>45</td>
+                                <td>2011-08-12</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">4</th>
+                                <td>Angus Grady</td>
+                                <td>HR</td>
+                                <td>34</td>
+                                <td>2012-06-11</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">5</th>
+                                <td>Raheem Lehner</td>
+                                <td>Dynamic Division Officer</td>
+                                <td>47</td>
+                                <td>2011-04-19</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                          <!-- End Table with hoverable rows -->
+            
+                        </div>
+                      </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+              </div>
+            </div>
+          </div>
+    </section>
+
+<!-- End #main -->
+{% endblock main %}
+{% block tempjs %}
+<!-- Template Main JS File -->
+  <script src="/static/css/assets/js/main.js"></script>
+{% endblock tempjs %}

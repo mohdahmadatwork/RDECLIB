@@ -1,0 +1,118 @@
+{% extends "dashboardbase.html" %}
+{% block css %}
+<!-- Template Main CSS File -->
+<link href="/static/css/assets/css/style.css" rel="stylesheet">
+{% endblock css %}
+{% block main %}
+
+
+    <div class="pagetitle">
+      <h1>Add Books</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item">Books</li>
+          <li class="breadcrumb-item active">Add Book</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+    <section class="section">
+
+          
+
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Add Student</h5>
+
+              <!-- Add Student Form -->
+              <form class="row g-3" method="post" action="/clgsite/addstudent/" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="col-md-6">
+                  <label for="inputName5" class="form-label">First Name</label>
+                  <input type="text" class="form-control" id="inputName5" name="firstname">
+                </div>
+                <div class="col-md-6">
+                    <label for="inputName5" class="form-label">Last Name</label>
+                    <input type="text" class="form-control" id="inputName6" name="lastname">
+                </div>
+                <div class="col-md-6">
+                  <label for="inputEmail5" class="form-label">Email</label>
+                  <input type="email" class="form-control" id="inputEmail5" name="email">
+                </div>
+                <div class="col-md-6">
+                    <label for="inputName5" class="form-label">Father's Name</label>
+                    <input type="text" class="form-control" id="inputName7" name="fathersname">
+                </div>
+                <div class="col-12">
+                  <label for="inputAddress5" class="form-label">Address</label>
+                  <input type="text" class="form-control" id="inputAddres5s" placeholder="1234 Main St" name="address">
+                </div>
+                <div class="col-md-7">
+                  <label for="inputAddress2" class="form-label">Roll Number</label>
+                  <input type="number" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor" name="rollnumber">
+                </div>
+                <div class="col-md-2">
+                    <label for="inputState" class="form-label">Year</label>
+                    <select id="inputState" class="form-select" name="year">
+                      <option selected="">Choose...</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                  <label for="inputState" class="form-label">Branch</label>
+                  <select id="inputState" class="form-select" name="branch">
+                    <option selected="">Choose...</option>
+                    <option value="CSE&IT">CSE&IT</option>
+                    <option value="MCA">MCA</option>
+                    <option value="ECE">ECE</option>
+                    <option value="Mechanical">Mechanical</option>
+                    <option value="MBA">MBA</option>
+                  </select>
+                </div>
+                <div class="col-md-3">
+                  <label for="inputCity" class="form-label">Phone Number</label>
+                  <input type="number" class="form-control" id="inputCity" name="phonenumber">
+                </div>
+                <div class="col-md-2">
+                    <label for="inputZip" class="form-label">Joining Date</label>
+                    <input type="date" class="form-control" id="inputbilldate" name="joiningdate">
+                </div>
+                <div class="col-md-2">
+                    <label for="inputZip" class="form-label">Expiring Date</label>
+                    <input type="date" class="form-control" id="inputbilldate" name="expiringdate">
+                </div>
+                <div class="col md-3">
+                  <label for="inputNumber" class="form-label">Image</label>
+                  
+                    <input class="form-control" type="file" id="formFile" name="studentimage">
+                  
+                </div>
+                <div class="col-12">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="gridCheck">
+                    <label class="form-check-label" for="gridCheck">
+                      Check me out
+                    </label>
+                  </div>
+                </div>
+                <div class="text-center">
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                  <button type="reset" class="btn btn-secondary">Reset</button>
+                </div>
+              </form><!-- End Add Student Form -->
+
+            </div>
+          </div>
+        </div>
+    </section>
+
+<!-- End #main -->
+{% endblock main %}
+{% block tempjs %}
+<!-- Template Main JS File -->
+  <script src="/static/css/assets/js/main.js"></script>
+{% endblock tempjs %}

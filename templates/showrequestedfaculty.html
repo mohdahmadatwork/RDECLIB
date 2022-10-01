@@ -1,0 +1,56 @@
+{% extends "dashboardbase.html" %}
+{% block css %}
+<link href="/static/css/assets/css/style.css" rel="stylesheet">
+{% endblock css %}
+{% block main %}
+<main id="main" class="main" style="margin: 0px;">
+
+    <div class="pagetitle">
+      <h1>Add Books</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item">Books</li>
+          <li class="breadcrumb-item active">Add Book</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+    <section class="section">
+
+          
+
+        <div class="card">
+            <div class="card-body  ">
+              <div class="container-fluid my-3 py-2">
+                <div class="row row-cols-2 row-cols-lg-3 g-2 g-lg-2">
+                  {% for faculty in ffc %}
+                  <div class="col">
+                    <div class="p-3 border bg-light">
+                        <div class="card ">
+                            <img src="{{faculty.Faculty_image.url}}"  class="card-img-top" style="height: 30vh;" alt="Profile">
+                            <div class="card-body">
+                              <h5 class="card-title">{{faculty.Name}}</h5>
+                              <p class="card-text">  
+                                Branch:- {{faculty.Branch}} <br>
+                                Designation:- {{faculty.Designation}}<br>
+                                Email ID:-<small style="-ms-text-size-adjust: 10px;">{{faculty.Email}}</small>
+                              </p>
+                              <a href="/clgsite/confirmfaculty/{{faculty.Username}}" class="btn btn-outline-primary">Confirm</a>
+                              <a href="/clgsite/unconfirmfaculty/{{faculty.Username}}" class="btn btn-outline-danger">Delete</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      {% endfor %}
+                  
+                </div>
+              </div>
+            </div>
+        </div>
+    </section>
+
+  </main>
+{% endblock main %}
+{% block tempjs %}
+<script src="/static/css/assets/js/main.js"></script>
+{% endblock tempjs %}

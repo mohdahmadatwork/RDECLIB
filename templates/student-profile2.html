@@ -1,0 +1,212 @@
+{% extends "studentdashboardbase.html" %}
+{% block main %}
+
+  
+  <div class="pagetitle">
+    <h1>Profile</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+        <li class="breadcrumb-item">Users</li>
+        <li class="breadcrumb-item active">Profile</li>
+      </ol>
+    </nav>
+  </div><!-- End Page Title -->
+
+  <section class="section profile">
+    <div class="row">
+      <div class="col-xl-4">
+
+        <div class="card">
+          <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
+
+            <img src="{{student.Student_image.url}}" alt="Profile" class="rounded-circle" style="width: 150px;height: 150px ;">
+            <!-- <img src="{{student.Student_image.url}}" class="rounded float-start" style="width: 150px;height: 150px ;" alt="..."> -->
+            <h2>{{student.First_Name}} {{student.Last_Name}}</h2>
+            <h3>{{student.Library_ID}}</h3>
+            <div class="social-links mt-2">
+              <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+              <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+              <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+              <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="col-xl-8">
+
+        <div class="card">
+          <div class="card-body pt-3">
+            <!-- Bordered Tabs -->
+            <ul class="nav nav-tabs nav-tabs-bordered">
+
+              <li class="nav-item">
+                <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-overview">Overview</button>
+              </li>
+
+              
+
+              <li class="nav-item">
+                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-settings">Books</button>
+              </li>
+
+              <li class="nav-item">
+                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-change-password">Change Password</button>
+              </li>
+
+            </ul>
+            <div class="tab-content pt-2">
+
+              <div class="tab-pane fade show active profile-overview" id="profile-overview">
+                <h5 class="card-title">About</h5>
+                <p class="small fst-italic">Sunt est soluta temporibus accusantium neque nam maiores cumque temporibus. Tempora libero non est unde veniam est qui dolor. Ut sunt iure rerum quae quisquam autem eveniet perspiciatis odit. Fuga sequi sed ea saepe at unde.</p>
+
+                <h5 class="card-title">Profile Details</h5>
+
+                <div class="row">
+                  <div class="col-lg-3 col-md-4 label ">Full Name</div>
+                  <div class="col-lg-9 col-md-8">{{student.First_Name}} {{student.Last_Name}}</div>
+                </div>
+
+                <div class="row">
+                  <div class="col-lg-3 col-md-4 label">Branch</div>
+                  <div class="col-lg-9 col-md-8">{{student.Branch}}</div>
+                </div>
+
+                <div class="row">
+                  <div class="col-lg-3 col-md-4 label">Year</div>
+                  <div class="col-lg-9 col-md-8">{{student.Year}} year</div>
+                </div>
+
+                <div class="row">
+                  <div class="col-lg-3 col-md-4 label">Father's Name</div>
+                  <div class="col-lg-9 col-md-8">{{student.Fathers_Name}}</div>
+                </div>
+
+                <div class="row">
+                  <div class="col-lg-3 col-md-4 label">Address</div>
+                  <div class="col-lg-9 col-md-8">{{student.Address}}</div>
+                </div>
+
+                <div class="row">
+                  <div class="col-lg-3 col-md-4 label">Phone</div>
+                  <div class="col-lg-9 col-md-8">{{student.Phone_Number}}</div>
+                </div>
+
+                <div class="row">
+                  <div class="col-lg-3 col-md-4 label">Email</div>
+                  <div class="col-lg-9 col-md-8">{{student.Email}}</div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-3 col-md-4 label">Joining Date</div>
+                  <div class="col-lg-9 col-md-8">{{student.Joining_Date}}</div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-3 col-md-4 label">Expiring Date</div>
+                  <div class="col-lg-9 col-md-8">{{student.Expiring_Date}}</div>
+                </div>
+
+              </div>
+
+              
+
+              <div class="tab-pane fade pt-3" id="profile-settings">
+
+                <div class="container px-4">
+                  <div class="row gx-5">
+                    <div class="col">
+                     <div class="p-3">
+                       <!-- Settings Form -->
+                        <form method="post" >
+                          <div class="col-auto">
+                            <input type="number" class="form-control" id="inputPassword2" name="bn" placeholder="Book Number">
+                          </div>
+                          {% csrf_token %}
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div class="p-3 d-flex">
+                          <button type="submit"  class="btn btn-outline-success flex-fill mx-1 " formaction="/clgsite/bookissue/{{student.Library_ID}}">Issue</button>
+                          <button type="submit" class="btn btn-outline-danger flex-fill mx-1" formaction="/clgsite/bookreturn/{{student.Library_ID}}">Return</button>
+                        </div>
+                      </form><!-- End settings Form -->
+                    </div>
+                  </div>
+                </div>
+                <div class="container px-4">
+                  <div class="row gx-5">
+                    <div class="col">
+                     <div class="p-3 border bg-light"><!-- Table with stripped rows -->
+                      <table class="table table-striped overflow-hidden position-re">
+                        <thead>
+                          <tr>
+                            <th scope="col">Sr.</th>
+                            <th scope="col">Author</th>
+                            <th scope="col">Title</th>
+                            <th scope="col">Issue Date</th>
+                            <th scope="col">Return Date</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {% for h in History %}
+                          <tr>
+                            <th scope="row">{{forloop.counter}}</th>
+                            <td>{{h.bookno.Author}}</td>
+                            <td>{{h.bookno.Title}}</td>
+                            <td>{{h.Date_Issue}}</td>
+                            <td>{{h.Date_Return}}</td>
+                          </tr>
+                          {% endfor %}
+                        </tbody>
+                      </table></div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              <div class="tab-pane fade pt-3" id="profile-change-password">
+                <!-- Change Password Form -->
+                <form>
+
+                  <div class="row mb-3">
+                    <label for="currentPassword" class="col-md-4 col-lg-3 col-form-label">Current Password</label>
+                    <div class="col-md-8 col-lg-9">
+                      <input name="password" type="password" class="form-control" id="currentPassword">
+                    </div>
+                  </div>
+
+                  <div class="row mb-3">
+                    <label for="newPassword" class="col-md-4 col-lg-3 col-form-label">New Password</label>
+                    <div class="col-md-8 col-lg-9">
+                      <input name="newpassword" type="password" class="form-control" id="newPassword">
+                    </div>
+                  </div>
+
+                  <div class="row mb-3">
+                    <label for="renewPassword" class="col-md-4 col-lg-3 col-form-label">Re-enter New Password</label>
+                    <div class="col-md-8 col-lg-9">
+                      <input name="renewpassword" type="password" class="form-control" id="renewPassword">
+                    </div>
+                  </div>
+
+                  <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Change Password</button>
+                  </div>
+                </form><!-- End Change Password Form -->
+
+              </div>
+
+            </div><!-- End Bordered Tabs -->
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+<!-- End #main -->
+{% endblock main %}

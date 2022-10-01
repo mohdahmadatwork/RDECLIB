@@ -1,0 +1,186 @@
+{% extends "dashboardbase.html" %}
+{% block css %}
+<!-- Template Main CSS File -->
+<link href="/static/css/assets/css/style.css" rel="stylesheet">
+{% endblock css %}
+{% block main %}
+
+
+    <div class="pagetitle">
+      <h1>Reports</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+          <li class="breadcrumb-item">Books</li>
+          <li class="breadcrumb-item active">Reports</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section">
+       <div class="row">
+        <div class="col-lg-6">
+            
+          
+
+        </div>
+      </div>
+      <!-- Reports -->
+      <div class="col-12">
+        <div class="card">
+              <div class="filter">
+                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                      <li class="dropdown-header text-start">
+                      <h6>Filter</h6>
+                      </li>
+
+                      <li><a class="dropdown-item" href="#">Today</a></li>
+                      <li><a class="dropdown-item" href="#">This Month</a></li>
+                      <li><a class="dropdown-item" href="#">This Year</a></li>
+                  </ul>
+              </div>
+          
+
+          <div class="card-body">
+            <h5 class="card-title">Reports <span>|Today</span></h5>
+              
+            <!-- Line Chart -->
+            <div id="reportsChart"></div>
+
+
+            <script>
+              document.addEventListener("DOMContentLoaded", () => {
+                new ApexCharts(document.querySelector("#reportsChart"), {
+                  series: [{
+                    name: 'Book Issued',
+                    data: [31, 40, 28, 51, 42, 82, 56],
+                  }, {
+                    name: 'Book Returned',
+                    data: [11, 32, 45, 32, 34, 52, 41]
+                  }, {
+                    name: 'New Books',
+                    data: [15, 11, 32, 18, 9, 24, 11]
+                  }],
+                  chart: {
+                    height: 350,
+                    type: 'area',
+                    toolbar: {
+                      show: false
+                    },
+                  },
+                  markers: {
+                    size: 4
+                  },
+                  colors: ['#4154f1', '#2eca6a', '#ff771d'],
+                  fill: {
+                    type: "gradient",
+                    gradient: {
+                      shadeIntensity: 1,
+                      opacityFrom: 0.3,
+                      opacityTo: 0.4,
+                      stops: [0, 90, 100]
+                    }
+                  },
+                  dataLabels: {
+                    enabled: false
+                  },
+                  stroke: {
+                    curve: 'smooth',
+                    width: 2
+                  },
+                  xaxis: {
+                    type: 'datetime',
+                    categories: ["2018-09-19T00:00:00.000Z", "2018-09-19T01:30:00.000Z", "2018-09-19T02:30:00.000Z", "2018-09-19T03:30:00.000Z", "2018-09-19T04:30:00.000Z", "2018-09-19T05:30:00.000Z", "2018-09-19T06:30:00.000Z"]
+                  },
+                  tooltip: {
+                    x: {
+                      format: 'dd/MM/yy HH:mm'
+                    },
+                  }
+                }).render();
+              });
+            </script>
+            <!-- End Line Chart -->
+
+          </div>
+
+        </div>
+      </div><!-- End Reports -->
+   
+      <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Table with hoverable rows</h5>
+
+              <!-- Table with hoverable rows -->
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Author</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">No</th>
+                    <th scope="col">Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  
+                  {% for book in books %}
+                  <tr data-bs-toggle="modal" data-bs-target="#verticalycentered">
+                    <th scope="row">{{forloop.counter}}</th>
+                    <td>{{book.1.Author}}</td>
+                    <td>{{book.1.Title}}</td>
+                    <td>{{book.0}}</td>
+                    <td>Available</td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+              <!-- End Table with hoverable rows -->
+              <div class="modal fade" id="verticalycentered" tabindex="-1" aria-hidden="true" style="display: none;">
+                <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title">Vertically Centered</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <table class="table table-hover">
+                        <thead>
+                          <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Author</th>
+                            <th scope="col">Title</th>
+                            <th scope="col">No</th>
+                            <th scope="col">Status</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr data-bs-toggle="modal" data-bs-target="#verticalycentered">
+                            <th scope="row">{{forloop.counter}}</th>
+                            <td>{{book.1.Author}}</td>
+                            <td>{{book.1.Title}}</td>
+                            <td>{{book.0}}</td>
+                            <td>Available</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+    </section>
+
+<!-- End #main -->
+{% endblock main %}
+{% block tempjs %}
+<!-- Template Main JS File -->
+<script src="/static/css/assets/js/main.js"></script>
+{% endblock tempjs %}

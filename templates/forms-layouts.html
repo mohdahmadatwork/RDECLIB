@@ -1,0 +1,124 @@
+{% extends "dashboardbase.html" %}
+{% block css %}
+<!-- Template Main CSS File -->
+<link href="/static/css/assets/css/style.css" rel="stylesheet">
+{% endblock css %}
+{% block main %}
+
+
+    <div class="pagetitle">
+      <h1>Add Books</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item">Books</li>
+          <li class="breadcrumb-item active">Add Book</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+    <section class="section">
+
+          
+
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Add Book</h5>
+
+              <!-- Add Book Form -->
+              <form class="row g-3" method="post" action="/clgsite/bookadding/">
+                {% csrf_token %}
+                <div class="col-md-6">
+                  <input type="hidden" type="date" id="dateofentry" name="date">
+                  <label for="inputEmail5" class="form-label" >Author</label>
+                  <input type="text" class="form-control" id="inputEmail5" name="author">
+                </div>
+                <div class="col-md-6">
+                  <label for="inputPassword5" class="form-label">Title</label>
+                  <input type="Text" class="form-control" id="inputPassword5" name="title">
+                </div>
+                <div class="col-md-4">
+                  <label for="inputAddress5" class="form-label">Volume</label>
+                  <input type="number" class="form-control" id="inputAddres5s" name="volume">
+                </div>
+                <div class="col-md-4">
+                  <label for="inputAddress5" class="form-label">Year Of Publication</label>
+                  <input type="number" class="form-control" id="inputAddres5s" name="yearofpublication">  
+                </div>
+                <div class="col-md-4">
+                  <label for="inputAddress5" class="form-label">Source</label>
+                  <input type="text" class="form-control" id="inputAddres5s" name="source">  
+                </div>
+                <div class="col-6">
+                  <label for="inputAddress2" class="form-label">Place</label>
+                  <input type="text" class="form-control" id="inputAddress2" placeholder="New Delhi" name="place">
+                </div>
+                <div class="col-6">
+                  <label for="inputAddress2" class="form-label">Publisher</label>
+                  <input type="text" class="form-control" id="inputAddress3" name="publisher">
+                </div>
+                <div class="col-md-2">
+                  <label for="inputCity" class="form-label">Pages</label>
+                  <input type="text" class="form-control" id="inputpages" name="pages">
+                </div>
+                <div class="col-md-2">
+                  <label for="inputState" class="form-label">Book Number</label>
+                  <input type="number" class="form-control" id="inputNumber" name="booknumber">
+                </div>
+                <div class="col-md-2">
+                  <label for="inputZip" class="form-label">Class Number</label>
+                  <input type="number" class="form-control" id="inputZip" name="classnumber">
+                </div>
+                <div class="col-md-2">
+                  <label for="inputZip" class="form-label">Bill Number</label>
+                  <input type="number" class="form-control" id="inputbillnumber" name="billnumber">
+                </div>
+                <div class="col-md-2">
+                  <label for="inputZip" class="form-label">Bill Date</label>
+                  <input type="date" class="form-control" id="inputbilldate" name="billdate">
+                </div>
+                <div class="col-md-2">
+                  <label for="inputZip" class="form-label">Withdrawn Date</label>
+                  <input type="date" class="form-control" id="inputwithdrawn" name="withdrawndate">
+                </div>
+                <div class="col-12">
+                  <label for="inputAddress2" class="form-label">Remark</label>
+                  <input type="text" class="form-control" id="inputremark" name="remark">
+                </div>
+                <div class="col-md-4">
+                  <label for="inputState" class="form-label">Category</label>
+                  <select id="inputState" class="form-select" name="category">
+                    <option selected="">Related to...</option>
+                    <option value="Miscleneous">Miscleneous</option>
+                    <option value="CSE">CSE</option>
+                    <option value="IT">IT</option>
+                    <option value="ECE">ECE</option>
+                    <option value="Mechanical">Mechanical</option>
+                    <option value="MCA">MCA</option>
+                    <option value="Not Recognised">Not Recognised</option>
+                  </select>
+                </div>
+                <div class="col-12">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="gridCheck" name="aslikeprev">
+                    <label class="form-check-label" for="gridCheck">
+                      As like Previous
+                    </label>
+                  </div>
+                </div>
+                <div class="text-center">
+                  <button type="submit" class="btn btn-primary" >Submit</button>
+                  <button type="reset" class="btn btn-secondary">Reset</button>
+                </div>
+              </form><!-- End Add Book Form -->
+
+            </div>
+          </div>
+        </div>
+    </section>
+
+<!-- End #main -->
+{% endblock main %}
+{% block tempjs %}
+<!-- Template Main JS File -->
+  <script src="/static/css/assets/js/main.js"></script>
+{% endblock tempjs %}
